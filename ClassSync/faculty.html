@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClassSync — Faculty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/portal.css">
+</head>
+<body class="portal-body">
+
+<header class="topbar">
+  <div class="topbar-brand">ClassSync</div>
+  <div class="topbar-right">
+    <span class="role-chip">Faculty</span>
+    <span class="user-name" id="userName">Kartik D Gori</span>
+    <button class="logout-btn" id="logoutBtn">Log out</button>
+  </div>
+</header>
+
+<main class="portal-main">
+
+  <div class="page-head">
+    <h1>Faculty dashboard</h1>
+    <p>Mark attendance, review past sessions, and manage your syllabus.</p>
+  </div>
+
+  <div class="portal-tabs" role="tablist" aria-label="Faculty sections">
+    <button type="button" class="portal-tab tab-a is-active" role="tab" aria-selected="true" data-tab="mark">Mark Attendance</button>
+    <button type="button" class="portal-tab tab-b" role="tab" aria-selected="false" data-tab="log">Attendance Log</button>
+    <button type="button" class="portal-tab tab-c" role="tab" aria-selected="false" data-tab="syllabus">Manage Syllabus</button>
+    <button type="button" class="portal-tab tab-a" role="tab" aria-selected="false" data-tab="marks">Marks</button>
+    <button type="button" class="portal-tab tab-b" role="tab" aria-selected="false" data-tab="complaint">Send Complaint</button>
+    <button type="button" class="portal-tab tab-c" role="tab" aria-selected="false" data-tab="enroll">Enroll Student</button>
+  </div>
+
+  <!-- ===================== TAB 1: MARK ATTENDANCE ===================== -->
+  <section class="tab-panel" data-panel="mark">
+
+    <section class="lecture-card">
+      <div class="lecture-row">
+        <div class="field">
+          <label for="subject">Subject</label>
+          <select id="subject">
+            <option>Data Structures &amp; Algorithms</option>
+            <option>Database Management Systems</option>
+            <option>Computer Networks</option>
+            <option>Operating Systems</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="lectureDate">Date</label>
+          <input type="date" id="lectureDate">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="topic">Today's topic <span class="hint">(from syllabus)</span></label>
+        <select id="topic"></select>
+
+        <div class="add-topic-row" id="addTopicRow" hidden>
+          <input type="text" id="newTopicInput" placeholder="e.g. Unit 5 — Hashing &amp; collision handling">
+          <button type="button" class="add-topic-btn" id="addTopicBtn">+ Add</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="lectureDescription">Notes for this lecture <span class="hint">(optional)</span></label>
+        <textarea id="lectureDescription" rows="3" placeholder="e.g. Covered examples on tree balancing; assigned problems 4.1–4.5 for practice."></textarea>
+      </div>
+    </section>
+
+    <section class="rollcall-card">
+      <div class="rollcall-head">
+        <h2>Roll call — CSE 5th Sem, Div A</h2>
+        <div class="rollcall-summary">
+          <span class="pill pill-present"><span id="presentCount">0</span> present</span>
+          <span class="pill pill-absent"><span id="absentCount">0</span> absent</span>
+        </div>
+      </div>
+
+      <ul class="student-list" id="studentList">
+        <!-- rows injected by faculty.js -->
+      </ul>
+
+      <button class="submit-btn wide-btn" id="submitAttendance">
+        Save attendance &amp; notify absentees
+      </button>
+      <p class="save-note" id="saveNote" hidden>Attendance saved. Parent alerts queued for absentees.</p>
+    </section>
+
+  </section>
+
+  <!-- ===================== TAB 2: ATTENDANCE LOG ===================== -->
+  <section class="tab-panel" data-panel="log" hidden>
+    <section class="inbox-card">
+      <h2 class="section-title">Past sessions</h2>
+      <ul class="log-list" id="logList">
+        <!-- rows injected by faculty.js -->
+      </ul>
+    </section>
+  </section>
+
+  <!-- ===================== TAB 3: MANAGE SYLLABUS ===================== -->
+  <section class="tab-panel" data-panel="syllabus" hidden>
+    <section class="lecture-card">
+      <div class="field">
+        <label for="syllabusSubject">Subject</label>
+        <select id="syllabusSubject">
+          <option>Data Structures &amp; Algorithms</option>
+          <option>Database Management Systems</option>
+          <option>Computer Networks</option>
+          <option>Operating Systems</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="inbox-card">
+      <h2 class="section-title">Topics in this subject</h2>
+      <ul class="syllabus-list" id="syllabusList">
+        <!-- rows injected by faculty.js -->
+      </ul>
+
+      <div class="add-topic-row" id="syllabusAddRow">
+        <input type="text" id="syllabusNewTopic" placeholder="e.g. Unit 5 — Hashing &amp; collision handling">
+        <button type="button" class="add-topic-btn" id="syllabusAddBtn">+ Add topic</button>
+      </div>
+    </section>
+  </section>
+  <!-- ===================== TAB 4: MARKS ===================== -->
+  <section class="tab-panel" data-panel="marks" hidden>
+
+    <section class="lecture-card">
+      <div class="lecture-row">
+        <div class="field">
+          <label for="marksSubject">Subject</label>
+          <select id="marksSubject">
+            <option>Data Structures &amp; Algorithms</option>
+            <option>Database Management Systems</option>
+            <option>Computer Networks</option>
+            <option>Operating Systems</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="examType">Exam</label>
+          <select id="examType">
+            <option value="mpd1">MPd 1</option>
+            <option value="mpd2">MPd 2</option>
+            <option value="classtest">Class Test</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="maxMarks">Max marks for this exam</label>
+        <input type="number" id="maxMarks" value="25" min="1" style="max-width:8rem;">
+      </div>
+    </section>
+
+    <section class="rollcall-card">
+      <h2 class="section-title">Upload from Excel <span class="hint">(optional)</span></h2>
+      <p class="upload-hint">File must have two columns with headers exactly: <strong>Roll No</strong> and <strong>Marks</strong>.</p>
+      <div class="upload-row">
+        <input type="file" id="marksFileInput" accept=".xlsx,.xls,.csv">
+        <button type="button" class="add-topic-btn" id="parseFileBtn">Parse &amp; fill table</button>
+      </div>
+      <p class="upload-status" id="uploadStatus" hidden></p>
+    </section>
+
+    <section class="rollcall-card">
+      <div class="rollcall-head">
+        <h2>Enter marks manually</h2>
+      </div>
+
+      <ul class="student-list" id="marksList">
+        <!-- rows injected by faculty.js -->
+      </ul>
+
+      <button class="submit-btn wide-btn" id="saveMarksBtn">Save marks</button>
+      <p class="save-note" id="marksSaveNote" hidden></p>
+    </section>
+
+  </section>
+
+  <!-- ===================== TAB 5: SEND COMPLAINT ===================== -->
+  <section class="tab-panel" data-panel="complaint" hidden>
+    <section class="lecture-card">
+      <div class="field">
+        <label for="complaintStudent">Student</label>
+        <select id="complaintStudent"></select>
+      </div>
+
+      <div class="field">
+        <label for="complaintText">Complaint / note to parent</label>
+        <textarea id="complaintText" rows="5" placeholder="e.g. Has missed 3 consecutive lectures and has not submitted the last two assignments. Please advise."></textarea>
+      </div>
+
+      <button class="submit-btn wide-btn" id="sendComplaintBtn">Send to parent's email</button>
+      <p class="save-note" id="complaintSaveNote" hidden></p>
+    </section>
+  </section>
+
+  <!-- ===================== TAB 6: ENROLL STUDENT ===================== -->
+  <section class="tab-panel" data-panel="enroll" hidden>
+    <section class="lecture-card">
+      <div class="field">
+        <label for="enrollName">Student name</label>
+        <input type="text" id="enrollName" placeholder="e.g. Priya Sharma">
+      </div>
+      <div class="field">
+        <label for="enrollRoll">Roll No <span class="hint">(10 digits)</span></label>
+        <input type="text" id="enrollRoll" inputmode="numeric" maxlength="10" placeholder="e.g. 2401202009">
+      </div>
+
+      <div class="field">
+        <label for="enrollParentEmail">Parent's email <span class="hint">(their real, existing email)</span></label>
+        <input type="email" id="enrollParentEmail" placeholder="parent@gmail.com">
+      </div>
+
+      <button class="submit-btn wide-btn" id="enrollBtn">Enroll student</button>
+      <p class="save-note" id="enrollSaveNote" hidden></p>
+    </section>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/faculty.js"></script>
+</body>
+</html>

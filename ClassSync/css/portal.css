@@ -1,0 +1,903 @@
+/* Shared portal chrome — used by faculty.html, student.html, parent.html */
+
+.portal-body {
+  background:
+    repeating-linear-gradient(var(--paper) 0 38px, var(--grid-line) 38px 39px),
+    var(--paper);
+  min-height: 100vh;
+}
+
+/* ---------- TOPBAR ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--paper);
+  border-bottom: 2.5px solid var(--ink);
+  padding: 1rem 2rem;
+}
+
+.topbar-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ink);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.role-chip {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  transform: rotate(-2deg);
+}
+
+.user-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.logout-btn {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.logout-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.logout-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+
+.portal-main {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2.4rem 1.6rem 4rem;
+}
+
+.page-head h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--ink);
+  margin: 0 0 0.3rem 0;
+}
+
+.page-head p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 0 1.8rem 0;
+}
+
+/* ---------- CARDS (shared) ---------- */
+
+.lecture-card,
+.rollcall-card,
+.summary-card,
+.inbox-card {
+  background: var(--card);
+  border: 2.5px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 1.8rem 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+.lecture-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+
+.field { margin-bottom: 1.1rem; }
+.field:last-child { margin-bottom: 0; }
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.field .hint {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.field select,
+.field input[type="date"] {
+  width: 100%;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.add-topic-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.add-topic-row input {
+  flex: 1;
+  background: #FFFDF3;
+  border: 2px dashed var(--ink);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+
+.add-topic-btn {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0 0.9rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.add-topic-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.add-topic-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* ---------- ROLL CALL ---------- */
+
+.rollcall-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.rollcall-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+.rollcall-summary {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pill {
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  padding: 0.25rem 0.7rem;
+}
+
+.pill-present { background: #CFF3EA; color: var(--ink); }
+.pill-absent { background: #FFDADA; color: var(--ink); }
+
+.student-list {
+  list-style: none;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.student-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+  background: var(--paper);
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.student-roll {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.attendance-toggle {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.toggle-btn {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: 2px solid var(--ink);
+  border-radius: 7px;
+  padding: 0.35rem 0.65rem;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.toggle-btn.state-present.is-on {
+  background: var(--mint);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.toggle-btn.state-absent.is-on {
+  background: var(--coral);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.wide-btn {
+  width: 100%;
+}
+
+.save-note {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: #CFF3EA;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin: 0.9rem 0 0 0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 620px) {
+  .topbar { padding: 0.9rem 1.2rem; }
+  .user-name { display: none; }
+  .lecture-row { grid-template-columns: 1fr; gap: 0; }
+  .lecture-card, .rollcall-card, .summary-card, .inbox-card {
+    padding: 1.4rem 1.2rem;
+  }
+  .student-row { flex-wrap: wrap; gap: 0.6rem; }
+}
+
+/* ---------- STUDENT PORTAL ---------- */
+
+.summary-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.overall-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.overall-stat .big-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 3rem;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.overall-stat .big-number.is-low { color: var(--coral); }
+.overall-stat .big-number.is-ok { color: var(--mint); }
+
+.overall-stat .stat-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  max-width: 9rem;
+  line-height: 1.4;
+}
+
+.threshold-note {
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  background: var(--paper);
+}
+
+.threshold-note.warn { background: #FFDADA; }
+.threshold-note.safe { background: #CFF3EA; }
+
+.subject-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.subject-bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.subject-bar-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.subject-bar-top .subject-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.subject-bar-top .subject-pct {
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.bar-track {
+  height: 12px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--mint);
+}
+
+.bar-fill.is-low { background: var(--coral); }
+
+/* lecture history */
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  background: var(--paper);
+}
+
+.history-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.history-topic {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.history-meta {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.status-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  padding: 0.25rem 0.65rem;
+  white-space: nowrap;
+}
+
+.status-tag.present { background: #CFF3EA; }
+.status-tag.absent { background: #FFDADA; }
+
+@media (max-width: 620px) {
+  .summary-head { flex-direction: column; align-items: flex-start; }
+  .history-row { flex-wrap: wrap; }
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--ink);
+  margin: 0 0 1.1rem 0;
+}
+
+.chart-card {
+  background: var(--card);
+  border: 2.5px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 1.8rem 1.8rem;
+  margin-bottom: 1.8rem;
+}
+
+/* ---------- PARENT PORTAL ---------- */
+
+.child-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.child-info h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ink);
+  margin: 0 0 0.2rem 0;
+}
+
+.child-info p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.child-pct {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.child-pct .big-number {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.child-pct .big-number.is-low { color: var(--coral); }
+.child-pct .big-number.is-ok { color: var(--mint); }
+
+.child-pct .stat-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.notif-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.notif-row {
+  display: flex;
+  gap: 0.8rem;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  background: var(--paper);
+  position: relative;
+}
+
+.notif-row.is-unread {
+  background: #FFFDF3;
+  border-color: var(--ink);
+}
+
+.notif-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: var(--coral);
+}
+
+.notif-icon.present-icon { background: var(--mint); }
+.notif-icon.complaint-icon { background: var(--yellow); }
+
+.notif-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.notif-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.notif-msg {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.notif-time {
+  font-size: 0.74rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.unread-dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+@media (max-width: 620px) {
+  .child-card { flex-direction: column; align-items: flex-start; }
+  .notif-row { flex-wrap: wrap; }
+}
+
+/* ---------- PORTAL TABS (Faculty dashboard) ---------- */
+
+.portal-tabs {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.portal-tab {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.tab-a { transform: rotate(-1.5deg); }
+.tab-b { transform: rotate(1deg); }
+.tab-c { transform: rotate(-1deg); }
+
+.portal-tab:hover { transform: translateY(-2px) rotate(0deg); }
+
+.portal-tab.is-active {
+  background: var(--yellow);
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: translateY(-2px) rotate(0deg);
+}
+
+/* ---------- ATTENDANCE LOG ---------- */
+
+.log-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.log-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  background: var(--paper);
+}
+
+.log-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.log-topic {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.log-meta {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.log-counts {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* ---------- MANAGE SYLLABUS ---------- */
+
+.syllabus-list {
+  list-style: none;
+  margin: 0 0 1.3rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.syllabus-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  background: var(--paper);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.syllabus-delete {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.syllabus-delete:hover { background: var(--coral); }
+
+.empty-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ---------- MARKS & COMPLAINT (Faculty) ---------- */
+
+.field textarea {
+  width: 100%;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  resize: vertical;
+}
+
+.upload-hint {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: -0.4rem 0 0.9rem 0;
+}
+
+.upload-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.upload-row input[type="file"] {
+  flex: 1;
+  min-width: 12rem;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.upload-status {
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 0.8rem 0 0 0;
+  padding: 0.5rem 0.7rem;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+}
+
+.upload-status.ok { background: #CFF3EA; }
+.upload-status.err { background: #FFDADA; }
+
+.marks-input {
+  width: 5rem;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 7px;
+  padding: 0.35rem 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--ink);
+  text-align: center;
+}
+
+/* ---------- MY MARKS (Student view) ---------- */
+
+.marks-view-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.marks-view-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  background: var(--paper);
+}
+
+.marks-view-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.marks-view-subject {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.marks-view-exam {
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.marks-view-score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ink);
+}
+
+.marks-view-score.is-low { color: var(--coral); }
+.marks-view-score .out-of {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* locked marks input — already submitted, cannot be edited */
+.marks-input:disabled {
+  background: #EDEBE3;
+  color: var(--muted);
+  cursor: not-allowed;
+  border-style: dashed;
+}
+
+/* ---------- CHANGE PASSWORD DIALOG ---------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(35, 40, 59, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  z-index: 50;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 24rem;
+  background: var(--card);
+  border: 2.5px solid var(--ink);
+  border-radius: 14px;
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: 1.6rem 1.6rem 1.4rem;
+}
+
+.modal-card h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ink);
+  margin: 0 0 1.1rem 0;
+}
+
+.modal-card .field input[type="password"] {
+  width: 100%;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.6rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.modal-actions .add-topic-btn {
+  padding: 0.5rem 0.9rem;
+}
+
+@media (max-width: 620px) {
+  .topbar-right { flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; }
+}

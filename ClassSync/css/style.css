@@ -1,0 +1,333 @@
+:root {
+  --paper: #FDFDFB;
+  --grid-line: #E7ECF9;
+  --ink: #23283B;
+  --yellow: #FFE066;
+  --coral: #FF6B6B;
+  --mint: #2FC7B0;
+  --muted: #6B7094;
+  --card: #FFFFFF;
+
+  --font-display: 'Kalam', cursive;
+  --font-body: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+.screen {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- NOTEBOOK PANEL ---------- */
+
+.notebook-panel {
+  position: relative;
+  flex: 1.15;
+  padding: 3rem 3.5rem 2.4rem 4.2rem;
+  background:
+    repeating-linear-gradient(var(--paper) 0 38px, var(--grid-line) 38px 39px),
+    var(--paper);
+  border-right: 2px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+
+.spiral {
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  background-image: radial-gradient(circle, var(--paper) 3px, transparent 3.5px),
+                     radial-gradient(circle, var(--ink) 1.6px, transparent 2px);
+  background-size: 100% 34px;
+  background-position: 0 10px;
+  opacity: 0.55;
+}
+
+.page-content {
+  position: relative;
+  flex: 1;
+}
+
+.brand-mark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+
+.washi {
+  position: absolute;
+  height: 26px;
+  background: repeating-linear-gradient(45deg, var(--yellow) 0 8px, #FFF0A8 8px 16px);
+  opacity: 0.85;
+  border: 1px solid rgba(35,40,59,0.15);
+}
+
+.washi-1 {
+  width: 90px;
+  top: -6px;
+  right: 40px;
+  transform: rotate(6deg);
+}
+
+.washi-2 {
+  width: 76px;
+  top: -12px;
+  left: 28px;
+  transform: rotate(-5deg);
+  background: repeating-linear-gradient(45deg, var(--mint) 0 8px, #BDEFE6 8px 16px);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 3.6vw, 2.9rem);
+  line-height: 1.2;
+  margin: 1.8rem 0 1rem 0;
+  color: var(--ink);
+}
+
+.headline .highlight {
+  background: linear-gradient(180deg, transparent 55%, var(--yellow) 55%);
+  padding: 0 2px;
+}
+
+.sub-copy {
+  font-size: 0.97rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 24rem;
+  margin: 0 0 1.6rem 0;
+}
+
+.doodle {
+  width: 100%;
+  max-width: 30rem;
+  display: block;
+}
+
+.footnote {
+  position: relative;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 1.5rem 0 0 0;
+}
+
+/* ---------- LOGIN PANEL ---------- */
+
+.login-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  background: var(--paper);
+}
+
+.login-card {
+  position: relative;
+  width: 100%;
+  max-width: 22rem;
+  background: var(--card);
+  border: 2.5px solid var(--ink);
+  border-radius: 14px;
+  padding: 2.4rem 2.2rem 2.2rem;
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+.login-card .washi {
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 84px;
+}
+
+.login-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin: 0.4rem 0 0.2rem 0;
+  color: var(--ink);
+}
+
+.login-head p {
+  margin: 0 0 1.6rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* role tabs — sticky-note style */
+.role-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.7rem;
+}
+
+.role-tab {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 7px;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.tab-faculty { transform: rotate(-2deg); }
+.tab-student { transform: rotate(1.5deg); }
+.tab-parent  { transform: rotate(-1deg); }
+
+.role-tab:hover { transform: translateY(-2px) rotate(0deg); }
+
+.role-tab.is-active {
+  background: var(--yellow);
+  box-shadow: 3px 3px 0 var(--ink);
+  transform: translateY(-2px) rotate(0deg);
+}
+
+.role-tab:focus-visible,
+.submit-btn:focus-visible,
+input:focus-visible,
+.forgot-link:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
+}
+
+/* form fields */
+.field {
+  margin-bottom: 1.05rem;
+}
+
+.field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.field input {
+  width: 100%;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.field input::placeholder { color: #A6A9BE; }
+
+.field input:focus {
+  background: #FFFDF3;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.remember input { accent-color: var(--mint); }
+
+.forgot-link {
+  font-size: 0.8rem;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--mint);
+  text-underline-offset: 3px;
+}
+
+.form-error {
+  color: var(--coral);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: -0.7rem 0 1rem 0;
+}
+
+.submit-btn {
+  width: 100%;
+  background: var(--mint);
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+  border-radius: 9px;
+  padding: 0.72rem 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.submit-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.submit-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.login-footnote {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 1.6rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 860px) {
+  .screen {
+    flex-direction: column;
+  }
+  .notebook-panel {
+    flex: none;
+    padding: 2rem 1.6rem 1.6rem 2.4rem;
+    border-right: none;
+    border-bottom: 2px solid var(--ink);
+  }
+  .spiral { display: none; }
+  .headline { font-size: 1.9rem; margin-top: 1.4rem; }
+  .doodle { max-width: 20rem; margin: 1rem auto 0 auto; }
+  .login-panel { flex: none; padding: 2.4rem 1.4rem 3rem; }
+}
+
+@media (max-width: 420px) {
+  .sub-copy { font-size: 0.9rem; }
+  .doodle { max-width: 16rem; }
+  .login-card { padding: 2.1rem 1.5rem 1.9rem; }
+}

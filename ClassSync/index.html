@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClassSync — Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="screen">
+
+  <!-- LEFT: notebook panel -->
+  <section class="notebook-panel">
+    <div class="spiral" aria-hidden="true"></div>
+
+    <div class="page-content">
+      <div class="brand-mark">ClassSync</div>
+
+      <div class="washi washi-1" aria-hidden="true"></div>
+
+      <h1 class="headline">
+        Stay alert.<br>
+        <span class="highlight">Stay synced.</span>
+      </h1>
+      <p class="sub-copy">The moment a student is absent, their parent knows. The moment they're back, they know exactly what they missed.</p>
+
+      <!-- signature: hand-drawn doodle illustration -->
+      <svg class="doodle" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+        <!-- notebook/checklist card -->
+        <g transform="translate(30,70) rotate(-3)">
+          <rect x="0" y="0" width="140" height="120" rx="4" fill="#FFFFFF" stroke="#23283B" stroke-width="2.5"/>
+          <line x1="0" y1="26" x2="140" y2="26" stroke="#23283B" stroke-width="2"/>
+          <circle cx="16" cy="13" r="4" fill="none" stroke="#23283B" stroke-width="2"/>
+          <circle cx="30" cy="13" r="4" fill="none" stroke="#23283B" stroke-width="2"/>
+
+          <rect x="14" y="40" width="14" height="14" rx="2" fill="#2FC7B0" stroke="#23283B" stroke-width="2"/>
+          <path d="M 17 47 l 3 4 l 6 -7" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="36" y1="47" x2="112" y2="47" stroke="#23283B" stroke-width="2" stroke-linecap="round"/>
+
+          <rect x="14" y="64" width="14" height="14" rx="2" fill="#2FC7B0" stroke="#23283B" stroke-width="2"/>
+          <path d="M 17 71 l 3 4 l 6 -7" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="36" y1="71" x2="100" y2="71" stroke="#23283B" stroke-width="2" stroke-linecap="round"/>
+
+          <rect x="14" y="88" width="14" height="14" rx="2" fill="#FF6B6B" stroke="#23283B" stroke-width="2"/>
+          <line x1="18" y1="92" x2="24" y2="98" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="92" x2="18" y2="98" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+          <line x1="36" y1="95" x2="108" y2="95" stroke="#23283B" stroke-width="2" stroke-linecap="round"/>
+        </g>
+
+        <!-- dashed hand-drawn arrow -->
+        <path d="M 185 120 C 230 90, 270 150, 320 110" fill="none" stroke="#23283B" stroke-width="2.5" stroke-dasharray="1 9" stroke-linecap="round"/>
+        <path d="M 308 100 L 322 111 L 306 118" fill="none" stroke="#23283B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- bell (parent alert) -->
+        <g transform="translate(330,55) rotate(4)">
+          <path d="M 30 10 C 30 4 36 0 42 0 C 48 0 54 4 54 10 C 68 16 70 34 70 46 L 14 46 C 14 34 16 16 30 10 Z"
+                fill="#FFE066" stroke="#23283B" stroke-width="2.5" stroke-linejoin="round"/>
+          <line x1="14" y1="46" x2="70" y2="46" stroke="#23283B" stroke-width="2.5"/>
+          <path d="M 34 52 a 8 8 0 0 0 16 0" fill="none" stroke="#23283B" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M 78 10 C 84 16 87 24 87 32" fill="none" stroke="#23283B" stroke-width="2" stroke-linecap="round"/>
+          <path d="M 88 2 C 97 10 102 22 102 34" fill="none" stroke="#23283B" stroke-width="2" stroke-linecap="round"/>
+        </g>
+
+        <!-- scattered doodle marks -->
+        <path d="M 250 40 l 6 6 m 0 -6 l -6 6" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M 400 160 l 7 7 m 0 -7 l -7 7" stroke="#2FC7B0" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="60" cy="230" r="3" fill="#23283B"/>
+        <circle cx="150" cy="245" r="3" fill="#23283B"/>
+        <path d="M 240 220 q 60 -20 120 6" fill="none" stroke="#23283B" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"/>
+
+        <!-- handwritten label -->
+        <text x="345" y="130" font-family="Kalam, cursive" font-size="15" fill="#23283B" transform="rotate(-4 345 130)">synced!</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- RIGHT: login panel -->
+  <section class="login-panel">
+    <div class="login-card">
+      <div class="washi washi-2" aria-hidden="true"></div>
+
+      <div class="login-head">
+        <h2>Sign in</h2>
+        <p>Pick your role to continue</p>
+      </div>
+
+      <div class="role-tabs" role="tablist" aria-label="Select role">
+        <button type="button" class="role-tab tab-faculty is-active" role="tab" aria-selected="true" data-role="faculty">Faculty</button>
+        <button type="button" class="role-tab tab-student" role="tab" aria-selected="false" data-role="student">Student</button>
+        <button type="button" class="role-tab tab-parent" role="tab" aria-selected="false" data-role="parent">Parent</button>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@krishnaschool.edu.in" required autocomplete="username">
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+        </div>
+
+        <div class="field-row">
+          <label class="remember">
+            <input type="checkbox" id="remember" name="remember">
+            <span>Keep me signed in</span>
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <p class="form-error" id="formError" hidden>Enter both email and password to continue.</p>
+
+        <button type="submit" class="submit-btn">
+          Continue as <span id="roleLabel">Faculty</span>
+        </button>
+      </form>
+
+      <p class="login-footnote">Trouble signing in? Contact your department office.</p>
+    </div>
+  </section>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClassSync — Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/portal.css">
+</head>
+<body class="portal-body">
+
+<header class="topbar">
+  <div class="topbar-brand">ClassSync</div>
+  <div class="topbar-right">
+    <span class="role-chip">Student</span>
+    <span class="user-name" id="userName">Aarav Patel</span>
+    <button class="logout-btn" id="logoutBtn">Log out</button>
+  </div>
+</header>
+
+<main class="portal-main">
+
+  <div class="page-head">
+    <h1>Your dashboard</h1>
+    <p>CSE 5th Sem, Div A · Roll No. 2401202002</p>
+  </div>
+
+  <div class="portal-tabs" role="tablist" aria-label="Student sections">
+    <button type="button" class="portal-tab tab-a is-active" role="tab" aria-selected="true" data-tab="overview">Overview</button>
+    <button type="button" class="portal-tab tab-b" role="tab" aria-selected="false" data-tab="history">Lecture History</button>
+    <button type="button" class="portal-tab tab-c" role="tab" aria-selected="false" data-tab="marks">My Marks</button>
+  </div>
+
+  <!-- ===================== TAB 1: OVERVIEW ===================== -->
+  <section class="tab-panel" data-panel="overview">
+
+    <section class="summary-card">
+      <div class="summary-head">
+        <div class="overall-stat">
+          <span class="big-number" id="overallPct">—</span>
+          <span class="stat-label">overall attendance this semester</span>
+        </div>
+        <span class="threshold-note" id="thresholdNote">Checking…</span>
+      </div>
+
+      <div class="subject-bars" id="subjectBars">
+        <!-- rows injected by student.js -->
+      </div>
+    </section>
+
+    <section class="chart-card">
+      <h2 class="section-title">Attendance trend — last 6 weeks</h2>
+      <canvas id="trendChart" height="90"></canvas>
+    </section>
+
+  </section>
+
+  <!-- ===================== TAB 2: LECTURE HISTORY ===================== -->
+  <section class="tab-panel" data-panel="history" hidden>
+    <section class="inbox-card">
+      <h2 class="section-title">Recent lectures</h2>
+      <ul class="history-list" id="historyList">
+        <!-- rows injected by student.js -->
+      </ul>
+    </section>
+  </section>
+
+  <!-- ===================== TAB 3: MY MARKS ===================== -->
+  <section class="tab-panel" data-panel="marks" hidden>
+    <section class="inbox-card">
+      <h2 class="section-title">Marks</h2>
+      <ul class="marks-view-list" id="marksViewList">
+        <!-- rows injected by student.js -->
+      </ul>
+    </section>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/student.js"></script>
+</body>
+</html>
